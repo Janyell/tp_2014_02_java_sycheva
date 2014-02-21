@@ -1,0 +1,35 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" content="text/html;" >
+<head>
+	<title>Index.html</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<img src="/jetty-logo-80x22.png"/>
+<form action = "/" method = "POST">
+    <table>
+        <tr>
+            <td class="td-padding-right">
+                <label for="auth_login">Логин:</label>
+            </td>
+            <td>
+                <input type="text" name="login"  id="auth_login" required="1" size="20" placeholder="Введите Ваш логин"></input>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-padding-right">
+                <label for="auth_password">Пароль:</label>
+            </td>
+            <td>
+                <input type="password" name="password"  id="auth_password" required="1" size="20" placeholder="Введите Ваш пароль"></input>
+            </td>
+        </tr>
+        <tr>
+
+            <td></td>
+            <td>
+                <input type="submit" value="Отправить" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
