@@ -32,9 +32,9 @@ public class Frontend extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         Map<String, Object> pageVariables = new HashMap<>();
-        HttpSession session = request.getSession();
-        Long userId = (Long) session.getAttribute("userId");
         if (request.getPathInfo().equals("/timer")) {
+            HttpSession session = request.getSession();
+            Long userId = (Long) session.getAttribute("userId");
             if (userId == null)
                 response.sendRedirect("/");
             pageVariables.put("refreshPeriod", "1000");
