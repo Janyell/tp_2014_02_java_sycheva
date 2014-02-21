@@ -1,13 +1,12 @@
 package stat;
 
-import frontend.FrontendFroSession;
+import frontend.Frontend;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import templater.PageGenerator;
 
 import javax.servlet.Servlet;
 
@@ -16,7 +15,7 @@ import javax.servlet.Servlet;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        Servlet frontend = new FrontendFroSession();
+        Servlet frontend = new Frontend();
 
         Server server = new Server(8080);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);

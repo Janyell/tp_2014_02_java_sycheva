@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Timer</title>
+    <title>Таймер</title>
     <script>
         function setClientTime() {
             var currentTime = new Date();
