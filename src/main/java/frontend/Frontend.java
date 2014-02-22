@@ -16,11 +16,13 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class Frontend extends HttpServlet {
-    private final static Map<String, String> USERS_DATA = new HashMap<String, String>() {{
-        put("yell", "123");
-        put("stiff", "12345");
-    }};
     private AtomicLong userIdGenerator = new AtomicLong();
+    private final static Map<String, String> UsersData = new HashMap<>();
+
+    public Frontend() {
+        UsersData.put("yell", "123");
+        UsersData.put("stiff", "12345");
+    }
 
     public static String getTime() {
         DateFormat formatter = new SimpleDateFormat("HH.mm.ss");
@@ -44,7 +46,6 @@ public class Frontend extends HttpServlet {
         }
         else
             response.sendRedirect("/");
-        return;
     }
 
     public void doPost(HttpServletRequest request,
@@ -53,18 +54,13 @@ public class Frontend extends HttpServlet {
         String password = request.getParameter("password");
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
-        if (USERS_DATA.containsKey(login) && password.equals(USERS_DATA.get(login))) {
-            HttpSession session = request.getSession();
-            if (!session.isNew()) {
-                session.invalidate();
-                session = request.getSession();
-            }
-            Long userId = (Long) userIdGenerator.getAndIncrement();
+        if (UsersData.containsKey(login) && password.equals(UsersData.get(login))) {
+            HttpSession session = request.getSession(true);
+            Long userId = userIdGenerator.getAndIncrement();
             session.setAttribute("userId", userId);
             response.sendRedirect("/timer");
         }
         else
             response.sendRedirect("/");
-        return;
     }
 }
